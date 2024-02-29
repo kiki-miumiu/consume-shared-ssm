@@ -17,17 +17,17 @@ Parameters:
     Type: String
     AllowedPattern: ".+"
     Default: Platform
-  SharedGoldenAMI:
+  LatestLinuxAMI:
     Description: a shared golden AMI from centralised accounts
     Type: "AWS::SSM::Parameter::Value<String>"
-    Default: ""
+    Default: "arn:aws:ssm:ap-southeast-2:574263932610:parameter/latest_linux_ami"
 Resources:   # Add Resource here
   ConsumeSharedParameter:
     Type: AWS::SSM::Parameter
     Properties:
       Name: !Ref Name
       Type: String
-      Value: !Ref SharedGoldenAMI
+      Value: !Ref LatestLinuxAMI
       Description: consume Centralised cross account shared parameter for latest golden linux ami 
       Tags:
         EnvironmentType: !Ref EnvironmentType
